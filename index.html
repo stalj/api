@@ -8,6 +8,22 @@
 	<body>
 		<h1>Reacting to events</h1>
 		<p id="message">waiting for your action ...</p>
-		<button id="button" type="button">Click</button>
+		<button id="button" type="button" onclick="loadXMLDoc()">Click</button>
+		
+		
+		<script>
+			function loadXMLDoc() {
+			  var xhttp = new XMLHttpRequest();
+			  xhttp.onreadystatechange = function() {
+			    if (this.readyState == 4 && this.status == 200) {
+			      document.getElementById("demo").innerHTML =
+			      this.responseText;
+			    }
+			  };
+			  xhttp.open("GET", "http://api.nbp.pl/api/exchangerates/rates/c/usd/2016-04-04/?format=json", true);
+			  xhttp.send();
+			}
+		</script>
+		
 	<body>
 </html>
